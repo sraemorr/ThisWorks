@@ -35,14 +35,25 @@ void MoveFinger::Execute() {
 	{
 		if(pushedButton)
 		{
-			Robot::finger->In();
-			pushedButton = false;
+			if(!previousState){
+				Robot::finger->In();
+				pushedButton = false;
+				previousState = true;
+			}
+
 		}
 		else if(!pushedButton)
 		{
-			Robot::finger->Out();
-			pushedButton = true;
+			if(!previousState){
+				Robot::finger->Out();
+				pushedButton = true;
+				previousState = true;
+			}
+
 		}
+	}
+	else {
+		previousState = false;
 	}
 }
 

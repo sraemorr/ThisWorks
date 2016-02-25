@@ -35,14 +35,24 @@ void MoveElevator::Execute() {
 	{
 		if(pushedButton)
 		{
-			Robot::elevator->Up();
-			pushedButton = false;
+			if(!previousState){
+				Robot::elevator->Up();
+				pushedButton = false;
+				previousState = true;
+			}
 		}
 		else if(!pushedButton)
 		{
-			Robot::elevator->Down();
-			pushedButton = true;
+			if(!previousState){
+				Robot::elevator->Down();
+				pushedButton = true;
+				previousState = true;
+			}
+
 		}
+	}
+	else{
+		previousState = false;
 	}
 }
 
