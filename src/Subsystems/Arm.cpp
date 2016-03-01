@@ -45,6 +45,7 @@ void Arm::InitDefaultCommand() {
 }
 
 double Arm::ReturnPIDInput(){
+	printf("Arm Current Position: %f\n", encoder->GetDistance());
 	return encoder->GetDistance();
 }
 
