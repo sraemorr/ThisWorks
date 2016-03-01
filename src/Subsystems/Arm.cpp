@@ -88,9 +88,9 @@ void Arm::SetNewPosition(double newTarget, bool isRelative)
 		newTarget = 80;
 	}
 
-	if (newTarget < -3)
+	if (newTarget < -18)
 	{
-		newTarget = -3;
+		newTarget = -18;
 	}
 
 	if (!isRelative)
@@ -103,7 +103,7 @@ void Arm::SetNewPosition(double newTarget, bool isRelative)
 
 void Arm::SetNewRelativePosition(Joystick * stick)
 {
-	double newPosition = setPoint +
+	double newPosition = setPoint -
 			(8. * stick->GetRawAxis(1));
 
 	// printf("Joystick values %f\n", stick->GetRawAxis(1));
