@@ -32,6 +32,7 @@ Arm::Arm() : PIDSubsystem("Arm", 0.1, 0.0, 0.0) {
 	SetSetpoint(setPoint);
 
 	Enable();
+	isEnabled = true;
 
 }
 
@@ -45,6 +46,7 @@ void Arm::InitDefaultCommand() {
 }
 
 double Arm::ReturnPIDInput(){
+	printf("Current Arm Position %f\n", encoder->GetDistance());
 	return encoder->GetDistance();
 }
 
@@ -52,29 +54,32 @@ void Arm::UsePIDOutput(double output){
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
 
+	// Write speed to the motors. Note that we don't have to reverse them since we took care of that already.
+	Drive((float)output);
+}
+
+void Arm::Drive(float speed) {
+
+	// hold our position if PID is not enabled
+	// else we want to know where we are and lock there
+	// when we get out of override
+	setPoint = isEnabled ? setPoint : ReturnPIDInput();
+
 	// Cap the values at 1 so nothing strange happens
-	if (output > .3)
+	if (speed > .3)
 	{
-		output = .3;
+		speed = .3;
 	}
 
 	// Limit lower values as well
-	if (output < -.3)
+	if (speed < -.3)
 	{
-		output = -.3;
+		speed = -.3;
 	}
 
-	// Write speed to the motors. Note that we don't have to reverse them since we took care of that already.
-	aRM_MOTOR_1->Set((float)output);
-	aRM_MOTOR_2->Set((float)output);
+	aRM_MOTOR_1->Set((float)speed);
+	aRM_MOTOR_2->Set((float)speed);
 }
-
-/*
-void Arm::Drive(float speed) {
-	aRM_MOTOR_1->Set(speed);
-	aRM_MOTOR_2->Set(-speed);
-}
-*/
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
@@ -106,7 +111,6 @@ void Arm::SetNewRelativePosition(Joystick * stick)
 	double newPosition = setPoint -
 			(8. * stick->GetRawAxis(1));
 
-	// printf("Joystick values %f\n", stick->GetRawAxis(1));
 	printf("new relative position %f\n", newPosition);
 
 	this->SetNewPosition(newPosition, true);
@@ -115,4 +119,22 @@ void Arm::SetNewRelativePosition(Joystick * stick)
 double Arm::GetTarget()
 {
 	return setPoint;
+}
+
+void Arm::EnablePID(bool enable)
+{
+	if (enable && !isEnabled)
+	{
+		Enable();
+		isEnabled = true;
+	}
+	else if(!enable && isEnabled)
+	{
+		Disable();
+		isEnabled = false;
+	}
+	else
+	{
+		// DO NOTHING
+	}
 }
