@@ -34,14 +34,32 @@ void MoveWheelieBar::Initialize()
 
 // Called repeatedly when this Command is scheduled to run
 void MoveWheelieBar::Execute() {
-	pushedButton = Robot::oi->getOperatorJoystick()->GetRawButton(3);
-	if(pushedButton)
+
+	if (previousState)
 	{
-		Robot::wheelieBar->Up();
+		printf("Starting autonomous Wheelie bar");
+
+		// This is our signal to run in auto mode
+		if (pushedButton)
+		{
+			Robot::wheelieBar->Up();
+		}
+		else
+		{
+			Robot::wheelieBar->Down();
+		}
 	}
-	else // if(!pushedButton)
+	else
 	{
-		Robot::wheelieBar->Down();
+		pushedButton = Robot::oi->getOperatorJoystick()->GetRawButton(3);
+		if(pushedButton)
+		{
+			Robot::wheelieBar->Up();
+		}
+		else // if(!pushedButton)
+		{
+			Robot::wheelieBar->Down();
+		}
 	}
 }
 
