@@ -45,16 +45,18 @@ void RobotMap::init() {
     driveDriveMotorR2.reset(new VictorSP(0));
     lw->AddActuator("Drive", "DriveMotorR2", std::static_pointer_cast<VictorSP>(driveDriveMotorR2));
     
-    driveRobotDrive41.reset(new RobotDrive(driveDriveMotorL1, driveDriveMotorL2,
+    /*driveRobotDrive41.reset(new RobotDrive(driveDriveMotorL1, driveDriveMotorL2,
               driveDriveMotorR1, driveDriveMotorR2));
     
-    driveRobotDrive41->SetSafetyEnabled(true);
+    // driveRobotDrive41->SetSafetyEnabled(true);
         driveRobotDrive41->SetExpiration(0.1);
         driveRobotDrive41->SetSensitivity(0.5);
         driveRobotDrive41->SetMaxOutput(1.0);
 
         driveRobotDrive41->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
-        driveRobotDrive41->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+
+        driveRobotDrive41->SetInvertedMotor(RobotDrive::kRearRightMotor, true);*/
+
 
     wheelieBarSOLENOID_WHEELIEBAR.reset(new DoubleSolenoid(0, 1, 4));
     lw->AddActuator("WheelieBar", "SOLENOID_WHEELIEBAR", wheelieBarSOLENOID_WHEELIEBAR);
