@@ -32,10 +32,11 @@ void MoveElevator::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void MoveElevator::Execute() {
 
-	pushedButton = Robot::oi->getOperatorJoystick()->GetRawButton(1);
+	pushedButton = Robot::oi->getOperatorJoystick()->GetRawButton(1)
+			&& Robot::oi->getOperatorJoystick()->GetRawButton(4);
 	if(pushedButton)
 	{
-		//Robot::elevator->Up();
+		Robot::elevator->Up();
 	}
 	else
 	{
