@@ -31,19 +31,16 @@ Auto1::Auto1()
 	 */
 
 	// Lower the arm and the wheelie bar.
-	printf("Moving the Arm and wheelie bar");
-	AddSequential(new MoveArm(0.));
-	AddSequential(new MoveWheelieBar(true, false));
-	Wait(2.);
+	AddSequential(new TankDrive(-.5), .5);
+	AddSequential(new TankDrive(0.), 0);
+	AddSequential(new MoveArm(0.), 3);
+	AddSequential(new MoveWheelieBar(true, true, true), 1);
 
 	// Drive for a few seconds backwards
-	printf("Driving");
-	AddSequential(new TankDrive(-.5));
-	Wait(4.);
+	AddSequential(new TankDrive(-.75), 3.5);
 
 	// Get me off this ride!
-	printf("STOP!");
-	AddSequential(new TankDrive(0.));
+	AddSequential(new TankDrive(0.), 2);
 
 
 }

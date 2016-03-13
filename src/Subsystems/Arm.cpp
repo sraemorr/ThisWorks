@@ -47,8 +47,8 @@ void Arm::InitDefaultCommand() {
 
 double Arm::ReturnPIDInput(){
 
-	// printf("Current Arm Position %f\n", encoder->GetDistance());
-	return encoder->GetDistance();
+	// printf("Current Arm Position %f\n", -(encoder->GetDistance()));
+	return -(encoder->GetDistance());
 }
 
 void Arm::UsePIDOutput(double output){
@@ -87,7 +87,7 @@ void Arm::Drive(float speed) {
 
 void Arm::SetNewPosition(double newTarget, bool isRelative)
 {
-	// printf("set new target arm position %f\n", newTarget);
+	//printf("set new target arm position %f\n", newTarget);
 
 	if (newTarget > 80)
 	{

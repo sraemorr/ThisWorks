@@ -39,12 +39,12 @@ Drive::Drive() : Subsystem("Drive") {
 		    driveMotorR1,
 		    driveMotorR2);
 
-	drive->SetInvertedMotor(drive->kFrontLeftMotor, true);
-	drive->SetInvertedMotor(drive->kRearLeftMotor, true);
+	drive->SetInvertedMotor(drive->kFrontLeftMotor, false);
+	drive->SetInvertedMotor(drive->kRearLeftMotor, false);
 	drive->SetInvertedMotor(drive->kFrontRightMotor, true);
 	drive->SetInvertedMotor(drive->kRearRightMotor, true);
 
-
+	drive->SetSafetyEnabled(false);
 }
 
 void Drive::InitDefaultCommand() {

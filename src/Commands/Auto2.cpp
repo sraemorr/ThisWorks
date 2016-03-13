@@ -32,15 +32,18 @@ Auto2::Auto2()
 		 */
 
 		// Raise arm and wheelie bar
-		AddSequential(new MoveArm(60.));
+		AddSequential(new MoveArm(30.), 3.);
 		// Let initialize do what it does best
-		AddSequential(new MoveWheelieBar(false, false));
-		Wait(2.);
+		AddSequential(new MoveWheelieBar(false, false, true), 1);
 
+		AddSequential(new TankDrive(.2), .1);
+		AddSequential(new TankDrive(.3), .1);
+		AddSequential(new TankDrive(.4), .1);
+		AddSequential(new TankDrive(.5), .1);
+		AddSequential(new TankDrive(.6), .1);
 		// Drive for a few seconds forwards
-		AddSequential(new TankDrive(.5));
-		Wait(4.);
+		AddSequential(new TankDrive(.9), 3);
 
 		// Get me off this ride!
-		AddSequential(new TankDrive(0.));
+		AddSequential(new TankDrive(0.), 1);
 }

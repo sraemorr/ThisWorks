@@ -33,7 +33,7 @@ void MoveElevator::Initialize() {
 void MoveElevator::Execute() {
 
 	pushedButton = Robot::oi->getOperatorJoystick()->GetRawButton(1)
-			&& Robot::oi->getOperatorJoystick()->GetRawButton(4);
+			&& Robot::oi->getOperatorJoystick()->GetRawButton(5);
 	if(pushedButton)
 	{
 		Robot::elevator->Up();
