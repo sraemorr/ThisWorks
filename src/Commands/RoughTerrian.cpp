@@ -1,9 +1,10 @@
-#include "Auto2.h"
+#include "RoughTerrian.h"
+
 #include "MoveArm.h"
 #include "MoveWheelieBar.h"
 #include "TankDrive.h"
 
-Auto2::Auto2()
+RoughTerrian::RoughTerrian()
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -22,16 +23,7 @@ Auto2::Auto2()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 
-	/*
-		 * GAMEPLAN: In this autonomous, we are going to raise the arm to a
-		 * carry position and drive over the defense.
-		 * This auto works on
-		 * 	- moat
-		 * 	- rough terrain
-		 * 	- uneven terrain
-		 */
-
-		// Raise arm and wheelie bar
+	// Raise arm and wheelie bar
 		AddSequential(new MoveArm(30.), 3.);
 		// Let initialize do what it does best
 		AddSequential(new MoveWheelieBar(false, false, true), 1);
@@ -41,9 +33,9 @@ Auto2::Auto2()
 		AddSequential(new TankDrive(.4), .1);
 		AddSequential(new TankDrive(.5), .1);
 		AddSequential(new TankDrive(.6), .1);
-		// Drive for a few seconds forwards
+			// Drive for a few seconds forwards
 		AddSequential(new TankDrive(.9), 3);
 
-		// Get me off this ride!
+			// Get me off this ride!
 		AddSequential(new TankDrive(0.), 1);
 }

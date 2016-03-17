@@ -4,10 +4,10 @@
 #include "Commands/CommandGroup.h"
 #include "WPILib.h"
 
-class Auto1: public CommandGroup
+class LowBar: public CommandGroup
 {
 public:
-	Auto1();
+	LowBar();
 };
 
 #endif

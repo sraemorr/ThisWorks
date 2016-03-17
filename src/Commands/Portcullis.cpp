@@ -1,9 +1,10 @@
-#include "Auto1.h"
+#include "Portcullis.h"
+
 #include "MoveArm.h"
 #include "MoveWheelieBar.h"
 #include "TankDrive.h"
 
-Auto1::Auto1()
+Portcullis::Portcullis()
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -22,18 +23,10 @@ Auto1::Auto1()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 
-	/*
-	 * GAMEPLAN: In this autonomous, we are going to drop the arm and wheelie bar
-	 * and drive backwards over the outer works
-	 * This auto works on
-	 * 	- Port-cullis
-	 * 	- Low bar.
-	 */
-
 	// Lower the arm and the wheelie bar.
 	AddSequential(new TankDrive(-.5), .5);
 	AddSequential(new TankDrive(0.), 0);
-	AddSequential(new MoveArm(0.), 3);
+	AddSequential(new MoveArm(-10.), 3);
 	AddSequential(new MoveWheelieBar(true, true, true), 1);
 
 	// Drive for a few seconds backwards
@@ -41,6 +34,4 @@ Auto1::Auto1()
 
 	// Get me off this ride!
 	AddSequential(new TankDrive(0.), 2);
-
-
 }
