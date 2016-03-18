@@ -1,10 +1,7 @@
-#include "Portcullis.h"
-
-#include "MoveArm.h"
-#include "MoveWheelieBar.h"
+#include "DefenseCreep.h"
 #include "TankDrive.h"
-
-Portcullis::Portcullis()
+#include "MoveArm.h"
+DefenseCreep::DefenseCreep()
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -22,16 +19,6 @@ Portcullis::Portcullis()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-
-	// Lower the arm and the wheelie bar.
-	AddSequential(new TankDrive(-.5), .5);
-	AddSequential(new TankDrive(0.), 0);
-	AddSequential(new MoveArm(-10.), 3);
-	AddSequential(new MoveWheelieBar(true, true, true), 1);
-
-	// Drive for a few seconds backwards
-	AddSequential(new TankDrive(-.75), 3.5);
-
-	// Get me off this ride!
-	AddSequential(new TankDrive(0.1), 1);
+	AddSequential(new MoveArm(30.), 2);
+	AddSequential(new TankDrive(.2), 2);
 }

@@ -37,10 +37,10 @@ LowBar::LowBar()
 	AddSequential(new MoveWheelieBar(true, true, true), 1);
 
 	// Drive for a few seconds backwards
-	AddSequential(new TankDrive(-.75), 3.5);
+	AddSequential(new TankDrive(-.75), 2.5);
 
 	// Get me off this ride!
-	AddSequential(new TankDrive(0.), 2);
+	AddSequential(new TankDrive(0.1), 1);
 
 
 }

@@ -46,5 +46,5 @@ Moat::Moat()
 		AddSequential(new TankDrive(.9), 3);
 
 		// Get me off this ride!
-		AddSequential(new TankDrive(0.), 1);
+		AddSequential(new TankDrive(0.1), 1);
 }

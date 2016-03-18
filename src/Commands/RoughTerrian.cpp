@@ -34,7 +34,7 @@ RoughTerrian::RoughTerrian()
 		AddSequential(new TankDrive(.5), .1);
 		AddSequential(new TankDrive(.6), .1);
 			// Drive for a few seconds forwards
-		AddSequential(new TankDrive(.9), 3);
+		AddSequential(new TankDrive(.9), 2);
 
 			// Get me off this ride!
 		AddSequential(new TankDrive(0.), 1);

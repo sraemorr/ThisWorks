@@ -41,7 +41,8 @@ void Robot::RobotInit() {
 	oi.reset(new OI());
 
 	chooser = new SendableChooser();
-	chooser->AddDefault("Low Bar", new LowBar());
+	chooser->AddDefault("DefenseCreep", new DefenseCreep());
+	chooser->AddObject("Low Bar", new LowBar());
 	chooser->AddObject("Moat", new Moat());
 	chooser->AddObject("Portcullis", new Portcullis());
 	chooser->AddObject("RoughTerrain", new RoughTerrian());
