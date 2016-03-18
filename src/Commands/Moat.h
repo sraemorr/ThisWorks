@@ -4,10 +4,10 @@
 #include "Commands/CommandGroup.h"
 #include "WPILib.h"
 
-class Auto2 : public CommandGroup
+class Moat : public CommandGroup
 {
 public:
-	Auto2();
+	Moat();
 };
 
 #endif
