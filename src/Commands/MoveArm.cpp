@@ -56,7 +56,7 @@ void MoveArm::Execute() {
 	{
 		// Turn off the PID if needed
 		Robot::arm->EnablePID(false);
-		Robot::arm->Drive(-(Robot::oi->getOperatorJoystick()->GetRawAxis(1)));
+		Robot::arm->Drive(-(Robot::oi->getOperatorJoystick()->GetRawAxis(1) * .3));
 	}
 	else
 	{
@@ -108,7 +108,14 @@ void MoveArm::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool MoveArm::IsFinished() {
-    return false;
+	if (isAutonomous)
+	{
+		return Robot::arm->AtPosition();
+	}
+	else
+	{
+		return false;
+	}
 }
 
 // Called once after isFinished returns true

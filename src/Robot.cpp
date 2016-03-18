@@ -72,24 +72,30 @@ void Robot::DisabledInit(){
 		delete autoCommand;
 	}
 
-	if (lowBarPin->Get())
+	// Pins pull high, invert logic
+	if (!lowBarPin->Get())
 	{
+		printf("Selected Low Bar\n");
 		autoCommand = new LowBar();
 	}
-	else if(moatPin->Get())
+	else if(!moatPin->Get())
 	{
+		printf("Selected Moat\n");
 		autoCommand = new Moat();
 	}
-	else if(portcullisPin->Get())
+	else if(!portcullisPin->Get())
 	{
+		printf("Selected Portcullis\n");
 		autoCommand = new Portcullis();
 	}
-	else if(roughTerrainPin->Get())
+	else if(!roughTerrainPin->Get())
 	{
+		printf("Selected RoughTerrain\n");
 		autoCommand = new RoughTerrian();
 	}
 	else
 	{
+		printf("Selected DefenseCreep\n");
 		autoCommand = new DefenseCreep();
 	}
 

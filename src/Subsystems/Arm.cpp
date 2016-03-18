@@ -47,7 +47,7 @@ void Arm::InitDefaultCommand() {
 
 double Arm::ReturnPIDInput(){
 
-	printf("Current Arm Position %f\n", -(encoder->GetDistance()));
+	//printf("Current Arm Position %f\n", (encoder->GetDistance()));
 	return (encoder->GetDistance());
 }
 
@@ -67,9 +67,9 @@ void Arm::Drive(float speed) {
 	setPoint = isEnabled ? setPoint : ReturnPIDInput();
 
 	// Cap the values at 1 so nothing strange happens
-	if (speed > .3)
+	if (speed > .5)
 	{
-		speed = .3;
+		speed = .5;
 	}
 
 	// Limit lower values as well
@@ -88,17 +88,6 @@ void Arm::Drive(float speed) {
 void Arm::SetNewPosition(double newTarget, bool isRelative)
 {
 	//printf("set new target arm position %f\n", newTarget);
-
-	if (newTarget > 80)
-	{
-		newTarget = 80;
-	}
-
-	if (newTarget < -18)
-	{
-		newTarget = -18;
-	}
-
 	if (!isRelative)
 	{
 		setPoint = newTarget;
@@ -140,4 +129,9 @@ void Arm::EnablePID(bool enable)
 	{
 		// DO NOTHING
 	}
+}
+
+bool Arm::AtPosition()
+{
+	return abs(setPoint - (double) ReturnPIDInput()) < 5.;
 }

@@ -26,7 +26,7 @@ Portcullis::Portcullis()
 	// Lower the arm and the wheelie bar.
 	AddSequential(new TankDrive(-.5), .5);
 	AddSequential(new TankDrive(0.), 0);
-	AddSequential(new MoveArm(0.), 3);
+	AddSequential(new MoveArm(0.));
 	AddSequential(new MoveWheelieBar(true, true, true), 1);
 
 	// Drive for a few seconds backwards
