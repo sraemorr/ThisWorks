@@ -36,6 +36,11 @@
 #include "OI.h"
 
 class Robot : public IterativeRobot {
+private:
+	static std::shared_ptr<DigitalInput> lowBarPin;
+	static std::shared_ptr<DigitalInput> moatPin;
+	static std::shared_ptr<DigitalInput> portcullisPin;
+	static std::shared_ptr<DigitalInput> roughTerrainPin;
 public:
 	std::unique_ptr<Command> autonomousCommand;
 	static std::unique_ptr<OI> oi;
