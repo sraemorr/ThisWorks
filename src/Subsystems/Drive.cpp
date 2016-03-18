@@ -44,7 +44,7 @@ Drive::Drive() : Subsystem("Drive") {
 	drive->SetInvertedMotor(drive->kFrontRightMotor, true);
 	drive->SetInvertedMotor(drive->kRearRightMotor, true);
 
-
+	drive->SetSafetyEnabled(false);
 }
 
 void Drive::InitDefaultCommand() {

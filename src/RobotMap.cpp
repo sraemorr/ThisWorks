@@ -87,6 +87,7 @@ void RobotMap::init() {
     encoder.reset(new Encoder(10, 11, false, Encoder::k4X));
     lw->AddSensor("Arm", "encoder", encoder);
     encoder->SetDistancePerPulse(0.1875);
+    // encoder->SetReverseDirection(true);
     encoder->SetPIDSourceType(PIDSourceType::kDisplacement);
     encoder->SetReverseDirection(true);
     }
