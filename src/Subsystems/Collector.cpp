@@ -36,11 +36,11 @@ void Collector::InitDefaultCommand() {
 }
 
 void Collector::In() {
-	cOLLECTOR->Set(.5);
+	cOLLECTOR->Set(.75);
 }
 
 void Collector::Out() {
-	cOLLECTOR->Set(-.5);
+	cOLLECTOR->Set(-.75);
 }
 
 void Collector::Stop() {
