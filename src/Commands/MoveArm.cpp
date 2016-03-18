@@ -67,7 +67,7 @@ void MoveArm::Execute() {
 		{
 			printf("position 60 \n");
 
-			Robot::arm->SetNewPosition(60.);
+			Robot::arm->SetNewPosition(85.);
 
 		}
 		else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 0)
@@ -80,7 +80,7 @@ void MoveArm::Execute() {
 		{
 			printf("position 40 \n");
 
-			Robot::arm->SetNewPosition(40.);
+			Robot::arm->SetNewPosition(25.);
 
 		}
 		else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 270)
@@ -94,7 +94,7 @@ void MoveArm::Execute() {
 				{
 			printf("position -3 \n");
 
-			Robot::arm->SetNewPosition(-10.);
+			Robot::arm->SetNewPosition(-12.);
 
 		}
 		else

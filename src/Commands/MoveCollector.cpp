@@ -28,11 +28,13 @@ void MoveCollector::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void MoveCollector::Execute() {
-	if(Robot::oi->getOperatorJoystick()->GetRawAxis(3) >= .75)
+	if((Robot::oi->getOperatorJoystick()->GetRawAxis(3) >= .75) ||
+			Robot::oi->getLeftJoystick()->GetRawButton(1))
 	{
 		Robot::collector->In();
 	}
-	else if(Robot::oi->getOperatorJoystick()->GetRawButton(5))
+	else if(Robot::oi->getOperatorJoystick()->GetRawButton(6) ||
+			Robot::oi->getRightJoystick()->GetRawButton(1))
 	{
 		Robot::collector->Out();
 	}
