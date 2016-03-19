@@ -56,7 +56,7 @@ void MoveArm::Execute() {
 		{
 			// Turn off the PID if needed
 			Robot::arm->EnablePID(false);
-			Robot::arm->Drive(-(Robot::oi->getOperatorJoystick()->GetRawAxis(1) * .3));
+			Robot::arm->Drive(-(Robot::oi->getOperatorJoystick()->GetRawAxis(1) * .5));
 		}
 		else
 		{
@@ -95,10 +95,10 @@ void MoveArm::Execute() {
 			{
 				// Do nothing
 			}
+
+			Robot::arm->SetNewRelativePosition(Robot::oi->getOperatorJoystick().get());
 		}
 	}
-
-	Robot::arm->SetNewRelativePosition(Robot::oi->getOperatorJoystick().get());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -110,15 +110,17 @@ bool MoveArm::IsFinished() {
 			printf("Finished arm code with value %f\n", Robot::arm->GetRollingAverage());
 			return true;
 		}
-		else
+		else if (!Robot::arm->AtPosition())
 		{
 			return false;
 		}
+		else
+		{
+			return IsTimedOut();
+		}
 	}
-	else
-	{
-		return false;
-	}
+
+	return false;
 }
 
 // Called once after isFinished returns true

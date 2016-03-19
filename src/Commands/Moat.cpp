@@ -33,7 +33,8 @@ Moat::Moat()
 		 */
 
 		// Raise arm and wheelie bar
-		AddSequential(new MoveArm(30.));
+		AddSequential(new MoveArm(30.), 3);
+		AddSequential(new MoveArm(30.), 3);
 		// Let initialize do what it does best
 		AddSequential(new MoveWheelieBar(false, false, true), 1);
 
