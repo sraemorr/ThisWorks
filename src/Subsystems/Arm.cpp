@@ -29,6 +29,11 @@ Arm::Arm() : PIDSubsystem("Arm", 0.2, 0.0, 0.0) {
 	currentPosition = 0.;
 	SetSetpoint(setPoint);
 
+	for (int i = 0; i < 500; i++)
+	{
+		rollingAverage[i] = 90.;
+	}
+
 	Enable();
 	isEnabled = true;
 
@@ -49,7 +54,7 @@ double Arm::ReturnPIDInput(){
 	currentPosition = encoder->GetDistance();
 	rollingAverage[rollingIndex] = currentPosition;
 
-	rollingIndex = (rollingIndex + 1 < 10) ? rollingIndex + 1 : 0;
+	rollingIndex = (rollingIndex + 1 < 500) ? rollingIndex + 1 : 0;
 
 	// Do not return the rolling average, only return the last value for
 	// crisp PID control.
@@ -144,10 +149,10 @@ bool Arm::AtPosition()
 double Arm::GetRollingAverage()
 {
 	double averaged = 0.0;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 500; i++)
 	{
 		averaged += rollingAverage[i];
 	}
 
-	return averaged / 10.;
+	return averaged / 500.;
 }

@@ -32,7 +32,7 @@ private:
 	// The position of the robot at this point in time
 	double currentPosition;
 
-	double rollingAverage[10] = {90., 90., 90., 90., 90., 90., 90., 90., 90., 90.};
+	double rollingAverage[500];
 	int rollingIndex = 0;
 	double setPoint;
 	bool isEnabled;

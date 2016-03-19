@@ -48,6 +48,7 @@ void MoveArm::Execute() {
 	{
 		Robot::arm->EnablePID(true);
 		Robot::arm->SetNewPosition(position);
+		Wait(.01);
 	}
 	else
 	{
