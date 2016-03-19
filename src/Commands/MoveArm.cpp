@@ -43,63 +43,57 @@ void MoveArm::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void MoveArm::Execute() {
-//	Robot::arm->Drive(.35*Robot::oi->getOperatorJoystick()->GetRawAxis(1));
 	// Determine which button is pushed. There is a precedence here (for low values)
 	if (isAutonomous)
 	{
 		Robot::arm->EnablePID(true);
 		Robot::arm->SetNewPosition(position);
-		return;
-	}
-
-	if (Robot::oi->getOperatorJoystick()->GetRawAxis(2) >= .75)
-	{
-		// Turn off the PID if needed
-		Robot::arm->EnablePID(false);
-		Robot::arm->Drive(-(Robot::oi->getOperatorJoystick()->GetRawAxis(1) * .3));
 	}
 	else
 	{
-		// Turn on the PID if needed
-		Robot::arm->EnablePID(true);
-
-		if (Robot::oi->getOperatorJoystick()->GetRawButton(4))
+		if (Robot::oi->getOperatorJoystick()->GetRawAxis(2) >= .75)
 		{
-			printf("To climb mode\n");
-
-			Robot::arm->SetNewPosition(85.);
-
-		}
-		else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 0)
-		{
-			//printf("position 70 \n");
-
-			Robot::arm->SetNewPosition(20.);
-		}
-		else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 90)
-		{
-			//printf("position 40 \n");
-
-			Robot::arm->SetNewPosition(25.);
-
-		}
-		else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 270)
-		{
-			//printf("position 20 \n");
-
-			Robot::arm->SetNewPosition(10.);
-
-		}
-		else if(Robot::oi->getOperatorJoystick()->GetPOV(0) == 180)
-				{
-			//printf("position -3 \n");
-
-			Robot::arm->SetNewPosition(-12.);
-
+			// Turn off the PID if needed
+			Robot::arm->EnablePID(false);
+			Robot::arm->Drive(-(Robot::oi->getOperatorJoystick()->GetRawAxis(1) * .3));
 		}
 		else
 		{
-			// Do nothing
+			// Turn on the PID if needed
+			Robot::arm->EnablePID(true);
+
+			if (Robot::oi->getOperatorJoystick()->GetRawButton(4))
+			{
+				Robot::arm->SetNewPosition(85.);
+			}
+			else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 0)
+			{
+				//printf("position 70 \n");
+
+				Robot::arm->SetNewPosition(20.);
+			}
+			else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 90)
+			{
+				//printf("position 40 \n");
+
+				Robot::arm->SetNewPosition(25.);
+			}
+			else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 270)
+			{
+				//printf("position 20 \n");
+
+				Robot::arm->SetNewPosition(10.);
+			}
+			else if(Robot::oi->getOperatorJoystick()->GetPOV(0) == 180)
+			{
+				//printf("position -3 \n");
+
+				Robot::arm->SetNewPosition(-12.);
+			}
+			else
+			{
+				// Do nothing
+			}
 		}
 	}
 
@@ -112,7 +106,7 @@ bool MoveArm::IsFinished() {
 	{
 		if (Robot::arm->AtPosition())
 		{
-			printf("Finished arm code with value %f\n", Robot::arm->GetTarget());
+			printf("Finished arm code with value %f\n", Robot::arm->GetRollingAverage());
 			return true;
 		}
 		else
