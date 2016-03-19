@@ -123,6 +123,7 @@ void Robot::TeleopInit() {
 	// continue until interrupted by another command, remove
 	// these lines or comment it out.
 	autoCommand->Cancel();
+	Scheduler::GetInstance()->RemoveAll();
 }
 
 void Robot::TeleopPeriodic() {

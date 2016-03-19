@@ -29,6 +29,7 @@ Arm::Arm() : PIDSubsystem("Arm", 0.2, 0.0, 0.0) {
 
 	// ALWAYS SET A PID SYSTEM TO A START POINT!
 	setPoint = 0;
+	currentPosition = 0.;
 	SetSetpoint(setPoint);
 
 	Enable();
@@ -48,7 +49,14 @@ void Arm::InitDefaultCommand() {
 double Arm::ReturnPIDInput(){
 
 	//printf("Current Arm Position %f\n", (encoder->GetDistance()));
-	return (encoder->GetDistance());
+	currentPosition = encoder->GetDistance();
+	rollingAverage[rollingIndex] = currentPosition;
+
+	rollingIndex = (rollingIndex + 1 < 10) ? rollingIndex + 1 : 0;
+
+	// Do not return the rolling average, only return the last value for
+	// crisp PID control.
+	return currentPosition;
 }
 
 void Arm::UsePIDOutput(double output){
@@ -133,5 +141,12 @@ void Arm::EnablePID(bool enable)
 
 bool Arm::AtPosition()
 {
-	return abs(setPoint - (double) ReturnPIDInput()) < 5.;
+	// average the last few samples and see what we have
+	double averaged = 0.0;
+	for (int i = 0; i < 10; i++)
+	{
+		averaged += rollingAverage[i];
+	}
+
+	return abs(setPoint - (averaged / 10.)) < 5.;
 }

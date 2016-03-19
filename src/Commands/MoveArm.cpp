@@ -65,34 +65,34 @@ void MoveArm::Execute() {
 
 		if (Robot::oi->getOperatorJoystick()->GetRawButton(4))
 		{
-			printf("position 60 \n");
+			printf("To climb mode\n");
 
 			Robot::arm->SetNewPosition(85.);
 
 		}
 		else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 0)
 		{
-			printf("position 70 \n");
+			//printf("position 70 \n");
 
 			Robot::arm->SetNewPosition(20.);
 		}
 		else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 90)
 		{
-			printf("position 40 \n");
+			//printf("position 40 \n");
 
 			Robot::arm->SetNewPosition(25.);
 
 		}
 		else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 270)
 		{
-			printf("position 20 \n");
+			//printf("position 20 \n");
 
 			Robot::arm->SetNewPosition(10.);
 
 		}
 		else if(Robot::oi->getOperatorJoystick()->GetPOV(0) == 180)
 				{
-			printf("position -3 \n");
+			//printf("position -3 \n");
 
 			Robot::arm->SetNewPosition(-12.);
 
@@ -110,7 +110,15 @@ void MoveArm::Execute() {
 bool MoveArm::IsFinished() {
 	if (isAutonomous)
 	{
-		return Robot::arm->AtPosition();
+		if (Robot::arm->AtPosition())
+		{
+			printf("Finished arm code with value %f\n", Robot::arm->GetTarget());
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	else
 	{

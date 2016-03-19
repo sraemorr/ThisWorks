@@ -19,6 +19,6 @@ DefenseCreep::DefenseCreep()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new MoveArm(30.), 6);
-	AddSequential(new TankDrive(.5), 2);
+	AddSequential(new MoveArm(30.));
+	//AddSequential(new TankDrive(.5), 2);
 }
