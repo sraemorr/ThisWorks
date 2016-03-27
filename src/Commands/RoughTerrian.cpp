@@ -24,8 +24,8 @@ RoughTerrian::RoughTerrian()
 	// arm.
 
 	// Raise arm and wheelie bar
-		AddSequential(new MoveArm(30.), 3);
-		AddSequential(new MoveArm(30.), 3);
+		AddSequential(new MoveArm(-44.), 3);
+		AddSequential(new MoveArm(-44.), 3);
 		// Let initialize do what it does best
 		AddSequential(new MoveWheelieBar(false, false, true), 1);
 

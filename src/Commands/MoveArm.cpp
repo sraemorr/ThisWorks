@@ -65,31 +65,37 @@ void MoveArm::Execute() {
 
 			if (Robot::oi->getOperatorJoystick()->GetRawButton(4))
 			{
-				Robot::arm->SetNewPosition(85.);
+				//Robot::arm->SetNewPosition(85.);
+				Robot::arm->SetNewPosition(11.);
 			}
 			else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 0)
 			{
 				//printf("position 70 \n");
 
-				Robot::arm->SetNewPosition(20.);
+				//Robot::arm->SetNewPosition(20.);
+				Robot::arm->SetNewPosition(-54.);
 			}
 			else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 90)
 			{
 				//printf("position 40 \n");
 
-				Robot::arm->SetNewPosition(25.);
+				//Robot::arm->SetNewPosition(25.);
+				Robot::arm->SetNewPosition(-74.);
 			}
 			else if(Robot::oi->getOperatorJoystick()->GetPOV(0)== 270)
 			{
 				//printf("position 20 \n");
 
-				Robot::arm->SetNewPosition(10.);
+				//Robot::arm->SetNewPosition(10.);
+				Robot::arm->SetNewPosition(-64.);
 			}
 			else if(Robot::oi->getOperatorJoystick()->GetPOV(0) == 180)
 			{
 				//printf("position -3 \n");
 
-				Robot::arm->SetNewPosition(-12.);
+				//Robot::arm->SetNewPosition(-12.);
+				Robot::arm->SetNewPosition(-86.);
+
 			}
 			else
 			{
