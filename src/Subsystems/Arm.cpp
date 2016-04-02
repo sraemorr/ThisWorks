@@ -43,11 +43,11 @@ double Arm::ReturnPIDInput(){
 	currentPosition = encoder->GetDistance();
 	rollingAverage[rollingIndex] = currentPosition;
 
-	rollingIndex = (rollingIndex + 1 < 500) ? rollingIndex + 1 : 0;
+	rollingIndex = (rollingIndex + 1 < 10) ? rollingIndex + 1 : 0;
 
 	// Do not return the rolling average, only return the last value for
 	// crisp PID control.
-	printf("Current Arm Position %f\n", (encoder->GetDistance()));
+	//printf("Current Arm Position %f\n", (encoder->GetDistance()));
 	return currentPosition;
 }
 
@@ -139,11 +139,10 @@ bool Arm::AtPosition()
 double Arm::GetRollingAverage()
 {
 	double averaged = 0.0;
-	for (int i = 0; i < 500; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		averaged += rollingAverage[i];
 	}
 
-	//printf("Rolling Average is %f\n", averaged / 500.);
-	return averaged / 500.;
+	return averaged / 10.;
 }
