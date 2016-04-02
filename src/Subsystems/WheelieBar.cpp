@@ -14,7 +14,7 @@
 #include "../Commands/MoveWheelieBar.h"
 
 WheelieBar::WheelieBar() : Subsystem("WheelieBar") {
-	solenoidWheeliebar = RobotMap::wheelieBarSOLENOID_WHEELIEBAR;
+	solenoidWheeliebar = RobotMap::wheelieBarSolenoid;
 }
 
 void WheelieBar::InitDefaultCommand() {

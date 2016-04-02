@@ -17,7 +17,7 @@
 #include "../Commands/MoveElevator.h"
 
 Elevator::Elevator() : Subsystem("Elevator") {
-    solenoidElevator = RobotMap::elevatorSOLENOID_ELEVATOR;
+    solenoidElevator = RobotMap::elevatorSolenoid;
 }
 
 void Elevator::InitDefaultCommand() {

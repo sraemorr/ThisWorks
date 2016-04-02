@@ -17,7 +17,7 @@
 #include "../Commands/MoveCollector.h"
 
 Collector::Collector() : Subsystem("Collector") {
-    collector = RobotMap::collectorCOLLECTOR;
+    collector = RobotMap::collectorMotor;
 }
 
 void Collector::InitDefaultCommand() {

@@ -15,7 +15,7 @@
 #include "../RobotMap.h"
 
 Pneumatics::Pneumatics() : Subsystem("Pneumatics") {
-    compressor = RobotMap::pneumaticsCOMPRESSOR;
+    compressor = RobotMap::compressor;
 }
 
 void Pneumatics::InitDefaultCommand() {

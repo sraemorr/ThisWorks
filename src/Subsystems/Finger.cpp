@@ -14,7 +14,7 @@
 #include "../Commands/MoveFinger.h"
 
 Finger::Finger() : Subsystem("Finger") {
-    solenoidFinger = RobotMap::fingerSOLENOID_FINGER;
+    solenoidFinger = RobotMap::fingerSolenoid;
 }
 
 void Finger::InitDefaultCommand() {
