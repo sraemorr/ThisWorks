@@ -31,6 +31,8 @@
 #include "Commands/Portcullis.h"
 #include "Commands/RoughTerrian.h"
 #include "Commands/DefenseCreep.h"
+#include "Commands/Ramparts.h"
+#include "Commands/Rockwall.h"
 
 #include "OI.h"
 
@@ -42,6 +44,8 @@ private:
 	static std::shared_ptr<DigitalInput> moatPin;
 	static std::shared_ptr<DigitalInput> portcullisPin;
 	static std::shared_ptr<DigitalInput> roughTerrainPin;
+	static std::shared_ptr<DigitalInput> rampartPin;
+	static std::shared_ptr<DigitalInput> rockwallPin;
 public:
 	/*
 	 * Gets or sets the live window for smart dash-board stuff

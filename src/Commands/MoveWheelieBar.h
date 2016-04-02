@@ -66,7 +66,7 @@ private:
     bool previousState;
 
     /*
-     * This is an internal state that determines if th ebutton was pushed the last time around.
+     * This is an internal state that determines if the button was pushed the last time around.
      */
     bool pushedButton;
 

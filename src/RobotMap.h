@@ -31,6 +31,13 @@ const int ELEVATOR_PORT_FORWARD = 2;
 const int ELEVATOR_PORT_REVERSE = 5;
 
 //Digital Inputs
+const int AUTO_LOWBAR_PIN = 1;
+const int AUTO_MOAT_PIN = 2;
+const int AUTO_PORTC_PIN = 3;
+const int AUTO_ROUGHT_PIN = 4;
+const int AUTO_RAMPART_PIN = 5;
+const int AUTO_ROCKWALL_PIN = 6;
+
 const int ARM_ENCODER_A_PORT = 20;
 const int ARM_ENCODER_B_PORT = 21;
 

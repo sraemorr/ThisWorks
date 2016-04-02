@@ -23,6 +23,8 @@ std::shared_ptr<DigitalInput> Robot::lowBarPin;
 std::shared_ptr<DigitalInput> Robot::moatPin;
 std::shared_ptr<DigitalInput> Robot::portcullisPin;
 std::shared_ptr<DigitalInput> Robot::roughTerrainPin;
+std::shared_ptr<DigitalInput> Robot::rampartPin;
+std::shared_ptr<DigitalInput> Robot::rockwallPin;
 
 void Robot::RobotInit() {
 	RobotMap::init();
@@ -44,10 +46,12 @@ void Robot::RobotInit() {
 	oi.reset(new OI());
 
 	// Initialize the autonomous inputs
-	lowBarPin.reset(new DigitalInput(1));
-	moatPin.reset(new DigitalInput(2));
-	portcullisPin.reset(new DigitalInput(3));
-	roughTerrainPin.reset(new DigitalInput(4));
+	lowBarPin.reset(new DigitalInput(AUTO_LOWBAR_PIN));
+	moatPin.reset(new DigitalInput(AUTO_MOAT_PIN));
+	portcullisPin.reset(new DigitalInput(AUTO_PORTC_PIN));
+	roughTerrainPin.reset(new DigitalInput(AUTO_ROUGHT_PIN));
+	rampartPin.reset(new DigitalInput(AUTO_RAMPART_PIN));
+	rockwallPin.reset(new DigitalInput(AUTO_ROCKWALL_PIN));
 
 	// Default autonomous is defense creep
 	autoCommand = new DefenseCreep();
@@ -89,6 +93,16 @@ void Robot::DisabledInit(){
 	{
 		printf("Selected RoughTerrain\n");
 		autoCommand = new RoughTerrian();
+	}
+	else if(!rampartPin->Get())
+	{
+		printf("Selected Ramparts\n");
+		autoCommand = new Ramparts();
+	}
+	else if(!rockwallPin->Get())
+	{
+		printf("Selected Rockwall\n");
+		autoCommand = new Rockwall();
 	}
 	else
 	{
