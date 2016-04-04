@@ -87,7 +87,7 @@ void MoveArm::Execute() {
 				//printf("position -3 \n");
 
 				//Robot::arm->SetNewPosition(-12.);
-				Robot::arm->SetNewPosition(-86.);
+				Robot::arm->SetNewPosition(-90.);
 
 			}
 			else

@@ -1,6 +1,6 @@
-#include "Rockwall.h"
+#include "ChevaldeFrise.h"
 
-Rockwall::Rockwall()
+ChevaldeFrise::ChevaldeFrise()
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -18,11 +18,12 @@ Rockwall::Rockwall()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new MoveArm(-50.), 1);
+	AddSequential(new MoveArm(-55.), 1);
 	AddSequential(new TankDrive(.7), 2);
 	AddSequential(new MoveArm(-90.), 2);
 	AddSequential(new MoveArm(-90.), 2);
-	AddSequential(new TankDrive(1.), 1);
+	AddSequential(new TankDrive(.75), .5);
 	AddSequential(new DriveandMoveArm(.75, .5, -55.));
 	AddSequential(new TankDrive(-.25), 1);
 }
+

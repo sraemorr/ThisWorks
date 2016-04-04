@@ -137,8 +137,6 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
-	SmartDashboard::PutNumber("Target Arm Position", arm->GetTarget());
-	SmartDashboard::PutNumber("Current Arm Position", arm->ReturnPIDInput());
 }
 
 void Robot::TestPeriodic() {
