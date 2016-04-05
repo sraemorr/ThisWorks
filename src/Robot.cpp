@@ -25,6 +25,7 @@ std::shared_ptr<DigitalInput> Robot::portcullisPin;
 std::shared_ptr<DigitalInput> Robot::roughTerrainPin;
 std::shared_ptr<DigitalInput> Robot::rampartPin;
 std::shared_ptr<DigitalInput> Robot::rockwallPin;
+std::shared_ptr<DigitalInput> Robot::chevaldefrisePin;
 
 void Robot::RobotInit() {
 	RobotMap::init();
@@ -52,7 +53,7 @@ void Robot::RobotInit() {
 	roughTerrainPin.reset(new DigitalInput(AUTO_ROUGHT_PIN));
 	rampartPin.reset(new DigitalInput(AUTO_RAMPART_PIN));
 	rockwallPin.reset(new DigitalInput(AUTO_ROCKWALL_PIN));
-
+	chevaldefrisePin.reset(new DigitalInput(AUTO_CHEVAL_PIN));
 	// Default autonomous is defense creep
 	autoCommand = new DefenseCreep();
   }

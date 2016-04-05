@@ -33,6 +33,7 @@
 #include "Commands/DefenseCreep.h"
 #include "Commands/Ramparts.h"
 #include "Commands/Rockwall.h"
+#include "Commands/ChevaldeFrise.h"
 
 #include "OI.h"
 
@@ -46,6 +47,7 @@ private:
 	static std::shared_ptr<DigitalInput> roughTerrainPin;
 	static std::shared_ptr<DigitalInput> rampartPin;
 	static std::shared_ptr<DigitalInput> rockwallPin;
+	static std::shared_ptr<DigitalInput> chevaldefrisePin;
 public:
 	/*
 	 * Gets or sets the live window for smart dash-board stuff
