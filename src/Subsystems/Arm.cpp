@@ -47,7 +47,7 @@ double Arm::ReturnPIDInput(){
 
 	// Do not return the rolling average, only return the last value for
 	// crisp PID control.
-	printf("Current Arm Position %f\n", (encoder->GetDistance()));
+	//printf("Current Arm Position %f\n", (encoder->GetDistance()));
 	return currentPosition;
 }
 

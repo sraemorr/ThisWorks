@@ -105,6 +105,11 @@ void Robot::DisabledInit(){
 		printf("Selected Rockwall\n");
 		autoCommand = new Rockwall();
 	}
+	else if (!chevaldefrisePin->Get())
+	{
+		printf("Selected ChevaldeFrise\n");
+		autoCommand = new ChevaldeFrise();
+	}
 	else
 	{
 		printf("Selected DefenseCreep\n");
