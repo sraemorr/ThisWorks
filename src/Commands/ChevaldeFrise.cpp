@@ -23,8 +23,8 @@ ChevaldeFrise::ChevaldeFrise()
 	AddSequential(new TankDrive(-.1), .03);
 	AddSequential(new MoveArm(-85.), 2);
 	AddSequential(new MoveArm(-85.), 2);
-	AddSequential(new TankDrive(1), 1.5);
-	AddSequential(new DriveandMoveArm(.75, .5, -55.));
+	AddSequential(new TankDrive(1), .5);
+	AddSequential(new DriveandMoveArm(.75, 1., -55.));
 	AddSequential(new TankDrive(-.25), 1);
 }
 
