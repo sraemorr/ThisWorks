@@ -28,6 +28,7 @@ Portcullis::Portcullis()
 	AddSequential(new TankDrive(0.), 0);
 	AddSequential(new MoveArm(-74.), 3);
 	AddSequential(new MoveArm(-74.), 3);
+	AddSequential(new TankDrive(0), 6);
 	AddSequential(new MoveWheelieBar(true, true, true), 1);
 
 	// Drive for a few seconds backwards
