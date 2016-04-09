@@ -19,10 +19,10 @@ Rockwall::Rockwall()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 	AddSequential(new MoveArm(-50.), 1);
-	AddSequential(new TankDrive(.7), 2);
+	AddSequential(new TankDrive(1.), 1.5);
 	AddSequential(new MoveArm(-90.), 2);
 	AddSequential(new MoveArm(-90.), 2);
-	AddSequential(new TankDrive(1.), 1);
+	AddSequential(new TankDrive(1.), .5);
 	AddSequential(new DriveandMoveArm(.75, .5, -55.));
 	AddSequential(new TankDrive(-.25), 1);
 }
