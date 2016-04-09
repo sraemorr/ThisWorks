@@ -3,6 +3,7 @@
 #include "MoveArm.h"
 #include "MoveWheelieBar.h"
 #include "TankDrive.h"
+#include "HoldBall.h"
 
 RoughTerrian::RoughTerrian()
 {
@@ -24,19 +25,20 @@ RoughTerrian::RoughTerrian()
 	// arm.
 
 	// Raise arm and wheelie bar
-		AddSequential(new MoveArm(-44.), 3);
-		AddSequential(new MoveArm(-44.), 3);
-		// Let initialize do what it does best
-		AddSequential(new MoveWheelieBar(false, false, true), 1);
+	AddParallel(new HoldBall(), 14);
+	AddSequential(new MoveArm(-44.), 3);
+	AddSequential(new MoveArm(-44.), 3);
+	// Let initialize do what it does best
+	AddSequential(new MoveWheelieBar(false, false, true), 1);
 
-		AddSequential(new TankDrive(.2), .1);
-		AddSequential(new TankDrive(.3), .1);
-		AddSequential(new TankDrive(.4), .1);
-		AddSequential(new TankDrive(.5), .1);
-		AddSequential(new TankDrive(.6), .1);
-			// Drive for a few seconds forwards
-		AddSequential(new TankDrive(.9), 2);
+	AddSequential(new TankDrive(.2), .1);
+	AddSequential(new TankDrive(.3), .1);
+	AddSequential(new TankDrive(.4), .1);
+	AddSequential(new TankDrive(.5), .1);
+	AddSequential(new TankDrive(.6), .1);
+		// Drive for a few seconds forwards
+	AddSequential(new TankDrive(.9), 2);
 
-			// Get me off this ride!
-		AddSequential(new TankDrive(0.), 1);
+		// Get me off this ride!
+	AddSequential(new TankDrive(0.), 1);
 }

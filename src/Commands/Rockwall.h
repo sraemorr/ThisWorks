@@ -6,6 +6,7 @@
 #include "MoveArm.h"
 #include "TankDrive.h"
 #include "DriveandMoveArm.h"
+#include "HoldBall.h"
 
 class Rockwall: public CommandGroup
 {

@@ -2,6 +2,7 @@
 #include "MoveArm.h"
 #include "MoveWheelieBar.h"
 #include "TankDrive.h"
+#include "HoldBall.h"
 
 LowBar::LowBar()
 {
@@ -29,7 +30,7 @@ LowBar::LowBar()
 	 * 	- Port-cullis
 	 * 	- Low bar.
 	 */
-
+	AddParallel(new HoldBall(), 14);
 	// Lower the arm and the wheelie bar.
 	AddSequential(new TankDrive(-.5), .5);
 	AddSequential(new TankDrive(0.), 1);

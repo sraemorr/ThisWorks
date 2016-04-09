@@ -51,6 +51,12 @@ public:
 	 * This method stops the collector.
 	 */
 	void Stop();
+
+	/*
+	 * This method will apply a little power to hold the ball in the collector.
+	 * Called only in autonomous.
+	 */
+	void Hold();
 };
 
 #endif

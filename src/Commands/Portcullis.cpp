@@ -3,6 +3,7 @@
 #include "MoveArm.h"
 #include "MoveWheelieBar.h"
 #include "TankDrive.h"
+#include "HoldBall.h"
 
 Portcullis::Portcullis()
 {
@@ -22,7 +23,7 @@ Portcullis::Portcullis()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-
+	AddParallel(new HoldBall(), 14);
 	// Lower the arm and the wheelie bar.
 	AddSequential(new TankDrive(-.5), .5);
 	AddSequential(new TankDrive(0.), 0);

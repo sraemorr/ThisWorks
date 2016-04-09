@@ -18,6 +18,7 @@ Ramparts::Ramparts()
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
+	AddParallel(new HoldBall(), 14);
 	AddSequential(new MoveArm(-50.), 1);
 	AddSequential(new TankDrive(.7), 1.5);
 	AddSequential(new MoveArm(-90.), 2);
