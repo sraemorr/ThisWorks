@@ -20,6 +20,7 @@ ChevaldeFrise::ChevaldeFrise()
 	// arm.
 	AddParallel(new HoldBall(), 14);
 	AddSequential(new MoveArm(-50.), 1);
+	AddSequential(new TankDrive(0), 3);
 	AddSequential(new TankDrive(.5), 2.25);
 	AddSequential(new TankDrive(-.1), .03);
 	AddSequential(new MoveArm(-85.), 2);

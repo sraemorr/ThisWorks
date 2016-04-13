@@ -36,6 +36,7 @@ Moat::Moat()
 	// Raise arm and wheelie bar
 	AddSequential(new MoveArm(-50.), 3);
 	AddSequential(new MoveArm(-50.), 3);
+	AddSequential(new TankDrive(0), 3);
 	// Let initialize do what it does best
 	AddSequential(new MoveWheelieBar(false, false, true), 1);
 

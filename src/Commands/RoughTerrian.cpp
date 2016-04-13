@@ -28,6 +28,7 @@ RoughTerrian::RoughTerrian()
 	AddParallel(new HoldBall(), 14);
 	AddSequential(new MoveArm(-44.), 3);
 	AddSequential(new MoveArm(-44.), 3);
+	AddSequential(new TankDrive(0), 3);
 	// Let initialize do what it does best
 	AddSequential(new MoveWheelieBar(false, false, true), 1);
 

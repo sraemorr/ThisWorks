@@ -20,6 +20,7 @@ Ramparts::Ramparts()
 	// arm.
 	AddParallel(new HoldBall(), 14);
 	AddSequential(new MoveArm(-50.), 1);
+	AddSequential(new TankDrive(0), 3);
 	AddSequential(new TankDrive(.7), 1.5);
 	AddSequential(new MoveArm(-90.), 2);
 	AddSequential(new MoveArm(-90.), 2);

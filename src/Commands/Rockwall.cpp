@@ -20,7 +20,8 @@ Rockwall::Rockwall()
 	// arm.
 	AddParallel(new HoldBall(), 14);
 	AddSequential(new MoveArm(-50.), 1);
-	AddSequential(new TankDrive(1.), 1.5);
+	AddSequential(new TankDrive(0), 3);
+	AddSequential(new TankDrive(.5), 2.2);
 	AddSequential(new MoveArm(-90.), 2);
 	AddSequential(new MoveArm(-90.), 2);
 	AddSequential(new TankDrive(1.), .5);
