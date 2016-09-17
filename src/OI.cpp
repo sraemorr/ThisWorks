@@ -35,15 +35,15 @@ OI::OI() {
     elevatorButton->WhenPressed(new MoveElevator());
     wheelieBarButton.reset(new JoystickButton(operatorJoystick.get(), 2));
     wheelieBarButton->WhenPressed(new MoveWheelieBar(false, false));
-    fingerButton.reset(new JoystickButton(operatorJoystick.get(), 1));
-    fingerButton->WhenPressed(new MoveFinger());
+    //fingerButton.reset(new JoystickButton(operatorJoystick.get(), 1));
+    //fingerButton->WhenPressed(new MoveFinger());
 
     // SmartDashboard Buttons
     SmartDashboard::PutData("TankDrive", new TankDrive());
     SmartDashboard::PutData("MoveCollector", new MoveCollector());
     SmartDashboard::PutData("MoveArm", new MoveArm());
     SmartDashboard::PutData("MoveElevator: MoveElevator", new MoveElevator());
-    SmartDashboard::PutData("MoveFinger: MoveFinger", new MoveFinger());
+    //SmartDashboard::PutData("MoveFinger: MoveFinger", new MoveFinger());
     SmartDashboard::PutData("MoveWheelieBar: MoveWheelieBar", new MoveWheelieBar(false, false));
 }
 
